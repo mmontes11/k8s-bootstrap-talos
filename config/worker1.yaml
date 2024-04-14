@@ -1,0 +1,17 @@
+machine:
+  network:
+    interfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+          - 192.168.0.101/24
+        routes:
+          - network: 192.168.0.0/24
+            gateway: 192.168.0.1
+  install:
+    disk: /dev/mmcblk0
+    wipe: false
+
+# cluster:
+#   cni:
+#     name: none
