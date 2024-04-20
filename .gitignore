@@ -3,3 +3,7 @@
 
 # Generated
 /gen/
+
+# Image
+/*.raw.xz
+/*.raw

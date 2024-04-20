@@ -38,6 +38,13 @@ TALOSCTL = $(shell which talosctl)
 endif
 endif
 
+# Image ID from https://factory.talos.dev/
+IMAGE_ID?=f47e6cd2634c7a96988861031bcc4144468a1e3aef82cca4f5b5ca3fffef778a
+.PHONY: image
+image: ## Download talosctl locally if necessary.
+	curl -LO https://factory.talos.dev/image/${IMAGE_ID}/v1.7.0/metal-arm64.raw.xz
+	xz -d metal-arm64.raw.xz
+
 ##@ Generate
 
 .PHONY: gen-secrets
