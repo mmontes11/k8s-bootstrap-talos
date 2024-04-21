@@ -1,9 +1,10 @@
 KUBERNETES_VERSION ?= 1.29.3
 TALOS_VERSION ?= v1.7.0
 CLUSTER_NAME ?= homelab
-CONTROL_PLANE_URL ?= https://192.168.0.100:6443
-CONTROL_PLANE ?= controlplane.yaml
+CONTROLPLANE_URL ?= https://192.168.0.100:6443
+CONTROLPLANE ?= controlplane.yaml
 WORKER ?= worker1.yaml
+NODES ?= 192.168.0.210
 
 LOCALBIN ?= $(shell pwd)/bin
 $(LOCALBIN):
@@ -53,14 +54,28 @@ gen-secrets: talosctl ## Generate secrets.
 
 .PHONY: gen-config
 gen-config: talosctl ## Generate config.
-	$(TALOSCTL) gen config $(CLUSTER_NAME) $(CONTROL_PLANE_URL) \
+	$(TALOSCTL) gen config $(CLUSTER_NAME) $(CONTROLPLANE_URL) \
 		--kubernetes-version $(KUBERNETES_VERSION) \
 		--with-secrets gen/secrets.yaml \
-		--config-patch-control-plane @config/$(CONTROL_PLANE) \
-		-o gen
+		--config-patch-control-plane @config/$(CONTROLPLANE) \
+		-o gen --force
 
 .PHONY: gen-worker
 gen-worker: talosctl ## Generate worker config.
 	$(TALOSCTL) machineconfig patch gen/worker.yaml \
 		--patch @config/$(WORKER) \
-		-o gen/$(WORKER) 
+		-o gen/$(WORKER)
+
+##@ Apply
+
+.PHONY: apply-controlplane
+apply-controlplane: talosctl ## Apply controlplane config
+	$(TALOSCTL) apply-config --insecure \
+		-n $(NODES) \
+		-f gen/$(CONTROLPLANE)
+
+##@ Bootstrap
+
+.PHONY: bootstrap-k8s
+bootstrap-k8s: talosctl ## Bootstrap kubernetes
+	$(TALOSCTL) bootstrap -n $(NODES)
