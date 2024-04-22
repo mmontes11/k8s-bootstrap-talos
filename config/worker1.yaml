@@ -12,7 +12,3 @@ machine:
   install:
     disk: /dev/mmcblk0
     wipe: false
-
-# cluster:
-#   cni:
-#     name: none
