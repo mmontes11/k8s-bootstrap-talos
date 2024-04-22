@@ -4,7 +4,7 @@ CLUSTER_NAME ?= homelab
 CONTROLPLANE_URL ?= https://192.168.0.100:6443
 CONTROLPLANE ?= controlplane.yaml
 WORKER ?= worker1.yaml
-NODE ?= 192.168.0.200
+NODE ?=
 
 LOCALBIN ?= $(shell pwd)/bin
 $(LOCALBIN):
