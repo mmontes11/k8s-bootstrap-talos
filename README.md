@@ -1,7 +1,7 @@
 # k8s-bootstrap-rpi-talos
 🚀 Kubernetes cluster bootstrapping for Raspberry Pi using [Talos](https://www.talos.dev/).
 
-#### Node preparation
+### Node preparation
 
 - [Update the EEPROM](https://www.talos.dev/v1.7/talos-guides/install/single-board-computers/rpi_generic/#updating-the-eeprom)
 - Get an image ID at [factory.talos.dev](https://factory.talos.dev/)
@@ -16,7 +16,7 @@ sudo dd if=metal-arm64.raw of=/dev/mmcblk0 conv=fsync bs=4M
 - Boot and assign a static IP in the router based on the [MAC](https://kubito.dev/posts/getting-pi-mac-address/)
 
 
-#### Controlplane
+### Controlplane
 
 - Generate secrets
 ```bash
@@ -35,7 +35,7 @@ NODE=<controlplane-ip> make apply-controlplane
 NODE=<controlplane-ip> make bootstrap-k8s
 ```
 
-#### Worker
+### Worker
 
 - Generate worker config
 ```bash
@@ -46,7 +46,7 @@ WORKER=<worker-name> make gen-worker
 WORKER=<worker-name> NODE=<worker-ip> make apply-worker
 ```
 
-#### Configuration
+### Configuration
 
 - Get kubeconfig
 ```bash
@@ -57,6 +57,6 @@ NODE=<controlplane-ip> make kubeconfig
 make talosconfig
 ```
 
-#### Reference
+### Reference
 - [Talos docs](https://www.talos.dev/v1.7/)
 - [Talos Linux Setup](https://kubito.dev/series/talos-linux-setup/) by [@kubito](https://kubito.dev/)
