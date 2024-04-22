@@ -39,11 +39,11 @@ NODE=<controlplane-ip> make bootstrap-k8s
 
 - Generate worker config
 ```bash
-WORKER=<worker-name> make gen-worker
+WORKER=worker1.yaml make gen-worker
 ```
 - Apply worker configuration
 ```bash
-WORKER=<worker-name> NODE=<worker-ip> make apply-worker
+WORKER=worker1.yaml NODE=<worker-ip> make apply-worker
 ```
 
 ### Configuration
