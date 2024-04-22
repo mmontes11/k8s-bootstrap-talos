@@ -85,3 +85,13 @@ apply-worker: talosctl ## Apply worker config
 .PHONY: bootstrap-k8s
 bootstrap-k8s: talosctl ## Bootstrap kubernetes
 	$(TALOSCTL) bootstrap -n $(NODE)
+
+##@ Configuration
+
+.PHONY: kubeconfig
+kubeconfig: talosctl ## Get kubeconfig
+	$(TALOSCTL) kubeconfig -n $(NODE)
+
+.PHONY: talosconfig
+talosconfig: talosctl ## Get talosconfig
+	$(TALOSCTL) config merge gen/talosconfig
