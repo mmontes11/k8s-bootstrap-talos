@@ -1,13 +1,14 @@
 machine:
   network:
+    hostname: worker1
     interfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: enxdca63208e2ac
         addresses:
           - 192.168.0.101/24
         routes:
-          - network: 192.168.0.0/24
+          - network: 0.0.0.0/0
             gateway: 192.168.0.1
+        dhcp: true
   install:
     disk: /dev/mmcblk0
     wipe: false

@@ -4,7 +4,7 @@ CLUSTER_NAME ?= homelab
 CONTROLPLANE_URL ?= https://192.168.0.100:6443
 CONTROLPLANE ?= controlplane.yaml
 WORKER ?= worker1.yaml
-NODES ?= 192.168.0.210
+NODE ?= 192.168.0.200
 
 LOCALBIN ?= $(shell pwd)/bin
 $(LOCALBIN):
@@ -71,11 +71,17 @@ gen-worker: talosctl ## Generate worker config.
 .PHONY: apply-controlplane
 apply-controlplane: talosctl ## Apply controlplane config
 	$(TALOSCTL) apply-config --insecure \
-		-n $(NODES) \
+		-n $(NODE) \
 		-f gen/$(CONTROLPLANE)
+
+.PHONY: apply-worker
+apply-worker: talosctl ## Apply worker config
+	$(TALOSCTL) apply-config --insecure \
+		-n $(NODE) \
+		-f gen/$(WORKER)
 
 ##@ Bootstrap
 
 .PHONY: bootstrap-k8s
 bootstrap-k8s: talosctl ## Bootstrap kubernetes
-	$(TALOSCTL) bootstrap -n $(NODES)
+	$(TALOSCTL) bootstrap -n $(NODE)
