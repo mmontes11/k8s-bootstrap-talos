@@ -11,7 +11,7 @@ IMAGE_ID=<image-id> make image
 ```
 - Write the image
 ```bash
-sudo dd if=metal-arm64.raw of=/dev/mmcblk0 conv=fsync bs=4M
+sudo dd if=metal-arm64.raw of=/dev/sda conv=fsync bs=4M
 ```
 - Boot and assign a static IP in the router based on the [MAC](https://kubito.dev/posts/getting-pi-mac-address/)
 
