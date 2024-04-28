@@ -1,6 +1,9 @@
 # k8s-bootstrap-rpi-talos
 🚀 Kubernetes cluster bootstrapping for Raspberry Pi using [Talos](https://www.talos.dev/).
 
+⚠️ Raspberry Pi 5 currently not supported by Talos:
+- https://github.com/siderolabs/talos/issues/7978
+
 ### Node preparation
 
 - [Update the EEPROM](https://www.talos.dev/v1.7/talos-guides/install/single-board-computers/rpi_generic/#updating-the-eeprom)
