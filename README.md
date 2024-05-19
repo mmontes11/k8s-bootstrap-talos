@@ -1,4 +1,4 @@
-# k8s-bootstrap-rpi-talos
+# k8s-bootstrap-talos
 🚀 Kubernetes cluster bootstrapping for Raspberry Pi using [Talos](https://www.talos.dev/).
 
 ⚠️ Raspberry Pi 5 currently not supported by Talos:
