@@ -4,6 +4,8 @@
 ⚠️ Raspberry Pi 5 currently not supported by Talos:
 - https://github.com/siderolabs/talos/issues/7978
 
+You may also take a look at the Ubuntu installation: [k8s-bootstrap](https://github.com/mmontes11/k8s-bootstrap).
+
 ### Node preparation
 
 - [Update the EEPROM](https://www.talos.dev/v1.7/talos-guides/install/single-board-computers/rpi_generic/#updating-the-eeprom)
