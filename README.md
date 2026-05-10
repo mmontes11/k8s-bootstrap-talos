@@ -4,6 +4,11 @@
 ⚠️ Raspberry Pi 5 currently not supported by Talos:
 - https://github.com/siderolabs/talos/issues/7978
 
+### Alternative installation flavours
+
+- [k8s-bootstrap](https://github.com/mmontes11/k8s-bootstrap): Kubeadm based installation.
+- [k8s-bootstrap-talos](https://github.com/mmontes11/k8s-bootstrap-talos): Talos based installation.
+
 ### Node preparation
 
 - [Update the EEPROM](https://www.talos.dev/v1.7/talos-guides/install/single-board-computers/rpi_generic/#updating-the-eeprom)
@@ -63,8 +68,3 @@ make talosconfig
 ### Reference
 - [Talos docs](https://www.talos.dev/v1.7/)
 - [Talos Linux Setup](https://kubito.dev/series/talos-linux-setup/) by [@kubito](https://kubito.dev/)
-
-### Alternative installation flavours
-
-- [k8s-bootstrap](https://github.com/mmontes11/k8s-bootstrap): Kubeadm based installation.
-- [k8s-bootstrap-talos](https://github.com/mmontes11/k8s-bootstrap-talos): Talos based installation.
